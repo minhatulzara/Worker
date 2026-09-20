@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ID Search System</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f2f2f2;
+  text-align: center;
+  padding: 30px;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+input {
+  padding: 10px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  width: 95%;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.call {
+  background: blue;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>ID Search</h2>
+
+  <input type="text" id="searchId" placeholder="Enter ID">
+
+  <button onclick="searchData()">Search</button>
+
+  <div id="result" style="margin-top:15px;"></div>
+</div>
+
+<script>
+// 👉 তোমার ডাটা এখানে বসাও
+const data = [
+  {id: "68253", name: "RABBI", phone: "01714120955"},
+  {id: "68254", name: "Mim", phone: "01349541451"},
+  {id: "68255", name: "Rina", phone: "01890215075"}
+];
+
+function searchData() {
+  let id = document.getElementById("searchId").value;
+  let resultDiv = document.getElementById("result");
+
+  let user = data.find(u => u.id === id);
+
+  if (user) {
+    resultDiv.innerHTML = `
+      <p><b>Name:</b> ${user.name}</p>
+      <p><b>Phone:</b> ${user.phone}</p>
+      <a href="tel:${user.phone}">
+        <button class="call">📞 Call Now</button>
+      </a>
+    `;
+  } else {
+    resultDiv.innerHTML = "<p style='color:red;'>No user found</p>";
+  }
+}
+</script>
+
+</body>
+</html>
